@@ -25,7 +25,7 @@ def kruskal_mst(edges: List[Edge], n_vertices: int) -> List[Edge]:
   for e in edges:
     root_u = unions.find(e.start)
     root_v = unions.find(e.end)
-    if root_u != root_v:
+    if root_u != root_v:  # They are not in the same set -> No cycle
       unions.union(root_u, root_v)
       mst_edges.append(e)
   return mst_edges
