@@ -15,11 +15,10 @@ class UnionFind:
     return self.parent[u]
 
   def union(self, root_u, root_v):
-    if root_u != root_v: # They are not in the same set -> No cycle
-      if self.rank[root_u] > self.rank[root_v]: # Rank is used to keep the tree flat as possible, so that find() operation can be minimal. 
-        self.parent[root_v] = root_u
-      elif self.rank[root_u] < self.rank[root_v]:
-        self.parent[root_u] = root_v
-      else:
-        self.parent[root_v] = root_u
-        self.rank[root_u] += 1
+    if self.rank[root_u] > self.rank[root_v]: # Rank is used to keep the tree flat as possible, so that find() operation can be minimal. 
+      self.parent[root_v] = root_u
+    elif self.rank[root_u] < self.rank[root_v]:
+      self.parent[root_u] = root_v
+    else:
+      self.parent[root_v] = root_u
+      self.rank[root_u] += 1
